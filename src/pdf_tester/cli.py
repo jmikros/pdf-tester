@@ -10,7 +10,7 @@ from .tests.base import get_all_test_names
 app = typer.Typer(
     name="pdf-tester",
     help="PDF validation and testing tool",
-    add_completion=True,
+    add_completion=False,
 )
 console = Console()
 
@@ -22,8 +22,7 @@ def test(
         None, "--tests", "-t",
         help="Comma-separated tests to run (e.g. structure,metadata). Omit to run all."
     ),
-    verbose: bool = typer.Option(False, "--verbose", "-v", help="Show detailed output"),
-):
+    ):
     """Run tests on a single PDF file."""
     report = run_tests_on_pdf(pdf_path, tests)
 
